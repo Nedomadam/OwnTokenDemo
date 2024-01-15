@@ -9,16 +9,16 @@ using System.Text;
 
 namespace Authority.Services
 {
-    public class AuthorizationService : IAuthorizationService
+    public class AuthenticationService : IAuthenticationService
     {
         private ApplicationDbContext _context;
         private AuthenticationOptions _options;
-        private ILogger<AuthorizationService> _logger;
+        private ILogger<AuthenticationService> _logger;
 
-        public AuthorizationService(
+        public AuthenticationService(
             ApplicationDbContext context, 
             IOptions<AuthenticationOptions> options, 
-            ILogger<AuthorizationService> logger)
+            ILogger<AuthenticationService> logger)
         {
             _context = context;
             _options = options.Value;

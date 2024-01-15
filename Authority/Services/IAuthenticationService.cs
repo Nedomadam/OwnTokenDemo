@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace Authority.Services
 {
-    public interface IAuthorizationService
+    public interface IAuthenticationService
     {
         AuthenticationToken? Authenticate(User user);
     }
