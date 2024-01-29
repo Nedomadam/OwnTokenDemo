@@ -19,6 +19,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("default", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+    });
+});
+
 builder.Services.AddOptions();
 builder.Services.Configure<AuthenticationOptions>(builder.Configuration.GetSection("Authentication"));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -36,6 +45,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("default");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
